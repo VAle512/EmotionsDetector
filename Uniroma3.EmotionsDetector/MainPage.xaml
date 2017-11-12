@@ -1,0 +1,55 @@
+﻿<Page 
+        x:Class="Uniroma3.EmotionsDetector.MainPage"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:local="clr-namespace:Uniroma3.EmotionsDetector"
+        Title="Emotions Detector"
+        ShowsNavigationUI="False"
+        >
+
+    <Grid Name="layoutGrid" Margin="10 0 10 10">
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Viewbox Margin="0,0,0,10" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Stretch="Uniform" HorizontalAlignment="Center" RenderTransformOrigin="0.5,0.557">
+            <Grid Name="MainGrid" Width="640" Height="480">
+                <Image Name="ColorImage"/>
+                <local:FaceTrackingViewer x:Name="faceTrackingViewer" Loaded="faceTrackingViewer_Loaded" />
+            </Grid>
+        </Viewbox>
+
+        <TextBox Grid.Row="1" Grid.Column="0" Name="outputBox"
+                     VerticalScrollBarVisibility="Visible" 
+                     HorizontalScrollBarVisibility="Visible" 
+                     IsReadOnly="True">
+        </TextBox>
+
+        <Grid Margin="5,0,0,0" Grid.Column="1" Grid.Row="1" >
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="3*" />
+                <ColumnDefinition Width="4*" />
+            </Grid.ColumnDefinitions>
+
+            <StackPanel Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center" Height="Auto">
+                <RadioButton x:Name="Pause" FontSize="15" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="0,0,0,10"
+            		Checked="pause" Content="PAUSE" RenderTransformOrigin="0.198,-0.155" IsChecked="True"/>
+                <RadioButton x:Name="Start" FontSize="15" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
+            		Checked="start" Content="START" RenderTransformOrigin="0.198,-0.155"/>
+            </StackPanel>
+            <Button  Grid.Column="1" x:Name="Reset" FontSize="14" Click="reset"
+            	Content="RESET" RenderTransformOrigin="0.198,-0.155" Margin="50,61,50,120"/>
+            <Button  Grid.Column="1" x:Name="Save" FontSize="14" Click="save_TextBox"
+            	Content="SAVE" RenderTransformOrigin="0.198,-0.155" Margin="50,127,50,53"/>
+        </Grid>
+
+    </Grid>
+</Page>
